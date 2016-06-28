@@ -1,2 +1,25 @@
 body {
   background: white; }
+
+h1 {
+  text-align: center; }
+
+#cats-directory {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  list-style: none; }
+
+.cat {
+  width: -webkit-calc((100%/3) - 20px);
+  width: calc((100%/3) - 20px);
+  padding: 10px; }
+
+.cat-photo {
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px; }

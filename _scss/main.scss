@@ -1,3 +1,24 @@
 body {
   background: white;
 }
+
+h1 {
+  text-align: center;
+}
+
+#cats-directory {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.cat {
+  width: calc((100%/3) - 20px);
+  padding: 10px;
+}
+
+.cat-photo {
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+}
