@@ -1,19 +1,35 @@
 var request = new XMLHttpRequest();
 var modal   = document.getElementById('modal');
+var list    = document.getElementById('cats-directory');
 
-request.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200){
-        // the request is complete, parse data and call callback
-        var response = this.responseText;
-        showInfo(response);
+function makeRequest(url) {
+  request = new XMLHttpRequest();
+
+  if (!request) {
+    alert('Giving up :( Cannot create an XMLHTTP instance');
+    return false;
+  }
+
+  request.onreadystatechange = alertContents;
+  request.open("GET", url);
+  request.send();
+}
+
+function alertContents() {
+  if (request.readyState === 4) {
+    if (request.status === 200) {
+      showInfo(request.responseText);
     } else {
-      console.log("not ready yet");
+      showInfo('There was a problem with the request.');
     }
-};
-
-request.open("GET","/profile.html",true);
-request.send();
+  }
+}
 
 function showInfo(data) {
   modal.innerHTML = data;
 };
+
+list.addEventListener('click', function(e) { 
+  e.preventDefault();
+  makeRequest('profile.html'); 
+}, false);
