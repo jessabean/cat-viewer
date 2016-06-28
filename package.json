@@ -1,0 +1,35 @@
+{
+  "name": "gulp-project-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for static sites with Gulp tasks, Sass, Mocha, and HTML5",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessabean/gulp-project-boilerplate.git"
+  },
+  "keywords": [
+    "gulp",
+    "sass",
+    "mocha",
+    "javascript",
+    "html5"
+  ],
+  "author": "jessabean",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jessabean/gulp-project-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jessabean/gulp-project-boilerplate#readme",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.3.2",
+    "mocha": "^2.5.3"
+  }
+}
