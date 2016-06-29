@@ -1,6 +1,6 @@
 var request = new XMLHttpRequest();
-var modal   = document.getElementById('modal');
-var list    = document.getElementById('cats-directory');
+var button = document.getElementById('button');
+var list = document.getElementById('list');
 
 function makeRequest(url) {
   request = new XMLHttpRequest();
@@ -18,18 +18,24 @@ function makeRequest(url) {
 function alertContents() {
   if (request.readyState === 4) {
     if (request.status === 200) {
-      showInfo(request.responseText);
+      console.log("ready");
+      var data = JSON.parse(request.responseText);
+      var arr = data.data.children;
+      arr.forEach(function(item){
+        var listItem = document.createElement('li');
+        listItem.innerHTML = item.data.url;
+        list.appendChild(listItem);
+        console.log(item.data.url);
+      })
+      // console.log(data.data.children);
     } else {
       showInfo('There was a problem with the request.');
     }
   }
 }
 
-function showInfo(data) {
-  modal.innerHTML = data;
-};
-
-list.addEventListener('click', function(e) { 
+button.addEventListener('click', function(e) { 
   e.preventDefault();
-  makeRequest('profile.html'); 
+  var dataURL = 'https://www.reddit.com/r/cats.json?jsonp?&show=all&limit=6'
+  makeRequest(dataURL); 
 }, false);
