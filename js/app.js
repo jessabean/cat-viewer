@@ -22,15 +22,35 @@ function alertContents() {
 
       data.forEach(function(item){
         var imgSrc  = item.images.fixed_height_still.url;
+        var gifSrc  = item.images.fixed_height.url;
         var img     = document.createElement("img");
 
         img.setAttribute('src', imgSrc);
+        img.setAttribute('class', 'js-animate-disabled')
         list.appendChild(img);
+
+        animateGif(img, gifSrc);
       })
     } else {
       showInfo('There was a problem with the request.');
     }
   }
+}
+
+function animateGif(img, gif) {
+  var img = img;
+  var gif = gif;
+  var origSrc = img.getAttribute('src');
+
+  img.addEventListener('click', function(e) {
+    if(img.getAttribute('class') === 'js-animate-disabled') {
+      img.setAttribute('src', gif);
+      img.setAttribute('class', 'js-animate');
+    } else {
+      img.setAttribute('src', origSrc);
+      img.setAttribute('class', 'js-animate-disabled');
+    }
+  });
 }
 
 button.addEventListener('click', function(e) { 
