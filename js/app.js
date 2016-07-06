@@ -1,6 +1,6 @@
 var request = new XMLHttpRequest();
-var button = document.getElementById('button');
-var list = document.getElementById('list');
+var button  = document.getElementById('button');
+var list    = document.getElementById('list');
 
 function makeRequest(url) {
   request = new XMLHttpRequest();
@@ -18,20 +18,14 @@ function makeRequest(url) {
 function alertContents() {
   if (request.readyState === 4) {
     if (request.status === 200) {
-      console.log("ready");
-      var data = JSON.parse(request.responseText);
-      var dataArray = data.data.children;
+      var data    = JSON.parse(request.responseText).data;
 
-      dataArray.forEach(function(item){
-        var imgSrc  = (item.data.url).replace("http://imgur.com/", "http://i.imgur.com/");
-        var imgData = item.data.thumbnail;
-        var ext     = imgData.substring(imgData.length - 3);
+      data.forEach(function(item){
+        var imgSrc  = item.images.fixed_height_still.url;
+        var img     = document.createElement("img");
 
-        if(imgSrc.indexOf("imgur") > -1) {
-          var img = document.createElement("img");
-          img.setAttribute('src', imgSrc + "." + ext);
-          list.appendChild(img);
-        }
+        img.setAttribute('src', imgSrc);
+        list.appendChild(img);
       })
     } else {
       showInfo('There was a problem with the request.');
@@ -41,6 +35,6 @@ function alertContents() {
 
 button.addEventListener('click', function(e) { 
   e.preventDefault();
-  var dataURL = 'https://www.reddit.com/r/cats.json?jsonp?&show=all&limit=6'
+  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC'
   makeRequest(dataURL); 
 }, false);
