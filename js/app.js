@@ -23,13 +23,17 @@ function alertContents() {
       data.forEach(function(item){
         var imgSrc  = item.images.fixed_height_still.url;
         var gifSrc  = item.images.fixed_height.url;
+
+        var link = document.createElement("a");
         var img     = document.createElement("img");
 
         img.setAttribute('src', imgSrc);
-        img.setAttribute('class', 'js-animate-disabled')
-        list.appendChild(img);
+        img.setAttribute('class', 'js-animate-disabled');
+        link.setAttribute('href', gifSrc);
+        link.appendChild(img);
+        list.appendChild(link);
 
-        animateGif(img, gifSrc);
+        animateGif(link);
       })
     } else {
       showInfo('There was a problem with the request.');
@@ -37,12 +41,14 @@ function alertContents() {
   }
 }
 
-function animateGif(img, gif) {
-  var img = img;
-  var gif = gif;
+function animateGif(link) {
+  var img = link.childNodes[0];
+  var gif = link.getAttribute('href');
   var origSrc = img.getAttribute('src');
 
-  img.addEventListener('click', function(e) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    
     if(img.getAttribute('class') === 'js-animate-disabled') {
       img.setAttribute('src', gif);
       img.setAttribute('class', 'js-animate');
