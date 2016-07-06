@@ -18,23 +18,20 @@ function makeRequest(url) {
 function alertContents() {
   if (request.readyState === 4) {
     if (request.status === 200) {
-      var data    = JSON.parse(request.responseText).data;
+      var data = JSON.parse(request.responseText).data;
+      var item = data[Math.floor(Math.random()*25)];
+      var imgSrc  = item.images.fixed_height_still.url;
+      var gifSrc  = item.images.fixed_height.url;
+      var link = document.createElement("a");
+      var img  = document.createElement("img");
 
-      data.forEach(function(item){
-        var imgSrc  = item.images.fixed_height_still.url;
-        var gifSrc  = item.images.fixed_height.url;
+      img.setAttribute('src', imgSrc);
+      img.setAttribute('class', 'js-animate-disabled');
+      link.setAttribute('href', gifSrc);
+      link.appendChild(img);
+      list.appendChild(link);
 
-        var link = document.createElement("a");
-        var img     = document.createElement("img");
-
-        img.setAttribute('src', imgSrc);
-        img.setAttribute('class', 'js-animate-disabled');
-        link.setAttribute('href', gifSrc);
-        link.appendChild(img);
-        list.appendChild(link);
-
-        animateGif(link);
-      })
+      animateGif(link);
     } else {
       showInfo('There was a problem with the request.');
     }
@@ -48,7 +45,7 @@ function animateGif(link) {
 
   link.addEventListener('click', function(e) {
     e.preventDefault();
-    
+
     if(img.getAttribute('class') === 'js-animate-disabled') {
       img.setAttribute('src', gif);
       img.setAttribute('class', 'js-animate');
@@ -61,6 +58,9 @@ function animateGif(link) {
 
 button.addEventListener('click', function(e) { 
   e.preventDefault();
-  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC'
+  list.innerHTML = '';
+
+  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit=50&api_key=dc6zaTOxFJmzC';
+
   makeRequest(dataURL); 
 }, false);
