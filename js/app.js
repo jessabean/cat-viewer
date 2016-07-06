@@ -20,14 +20,19 @@ function alertContents() {
     if (request.status === 200) {
       console.log("ready");
       var data = JSON.parse(request.responseText);
-      var arr = data.data.children;
-      arr.forEach(function(item){
-        var listItem = document.createElement('li');
-        listItem.innerHTML = item.data.url;
-        list.appendChild(listItem);
-        console.log(item.data.url);
+      var dataArray = data.data.children;
+
+      dataArray.forEach(function(item){
+        var imgSrc  = (item.data.url).replace("http://imgur.com/", "http://i.imgur.com/");
+        var imgData = item.data.thumbnail;
+        var ext     = imgData.substring(imgData.length - 3);
+
+        if(imgSrc.indexOf("imgur") > -1) {
+          var img = document.createElement("img");
+          img.setAttribute('src', imgSrc + "." + ext);
+          list.appendChild(img);
+        }
       })
-      // console.log(data.data.children);
     } else {
       showInfo('There was a problem with the request.');
     }
