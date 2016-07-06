@@ -35,6 +35,6 @@ function alertContents() {
 
 button.addEventListener('click', function(e) { 
   e.preventDefault();
-  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC'
+  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC'
   makeRequest(dataURL); 
 }, false);
