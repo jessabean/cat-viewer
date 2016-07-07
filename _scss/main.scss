@@ -1,24 +1,38 @@
 body {
-  background: white;
+  background: #A3DFE4 url('/img/cat_bg.png') right bottom no-repeat;;
+  background-size: 50% auto;
+  min-height: 100vh;
 }
 
-h1 {
+#main {
+  width: 40%;
+  min-height: 350px;
+  margin: 40px auto 0 auto;
+  background: white;
+  padding: 30px;
+}
+
+.gif-header {
+  margin-bottom: 20px;
   text-align: center;
 }
-
-#cats-directory {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
+img {
+  max-width: 100%;
 }
 
-.cat {
-  width: calc((100%/3) - 20px);
-  padding: 10px;
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #E98EEC;
+  border: none;
+  outline: none;
+  font-weight: bold;
+
+  &:active {
+    background: #a363a5;
+  }
 }
 
-.cat-photo {
-  width: 100%;
-  max-width: 300px;
-  max-height: 300px;
+#cat-container {
+  text-align: center;
 }
