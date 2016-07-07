@@ -1,6 +1,6 @@
 var request = new XMLHttpRequest();
 var button  = document.getElementById('button');
-var list    = document.getElementById('list');
+var div     = document.getElementById('cat-container');
 
 function makeRequest(url) {
   request = new XMLHttpRequest();
@@ -28,7 +28,7 @@ function alertContents() {
       img.setAttribute('src', imgSrc);
       link.setAttribute('href', gifSrc);
       link.appendChild(img);
-      list.appendChild(link);
+      div.appendChild(link);
 
       animateGif(link);
     } else {
@@ -55,7 +55,7 @@ function animateGif(link) {
 
 button.addEventListener('click', function(e) { 
   e.preventDefault();
-  list.innerHTML = '';
+  div.innerHTML = '';
 
   var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit=50&api_key=dc6zaTOxFJmzC';
 
