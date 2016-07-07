@@ -26,7 +26,6 @@ function alertContents() {
       var img  = document.createElement("img");
 
       img.setAttribute('src', imgSrc);
-      img.setAttribute('class', 'js-animate-disabled');
       link.setAttribute('href', gifSrc);
       link.appendChild(img);
       list.appendChild(link);
@@ -40,18 +39,16 @@ function alertContents() {
 
 function animateGif(link) {
   var img = link.childNodes[0];
-  var gif = link.getAttribute('href');
-  var origSrc = img.getAttribute('src');
+  var gifSrc = link.getAttribute('href');
+  var imgSrc = img.getAttribute('src');
 
   link.addEventListener('click', function(e) {
     e.preventDefault();
 
-    if(img.getAttribute('class') === 'js-animate-disabled') {
-      img.setAttribute('src', gif);
-      img.setAttribute('class', 'js-animate');
+    if(imgSrc) {
+      img.setAttribute('src', gifSrc);
     } else {
-      img.setAttribute('src', origSrc);
-      img.setAttribute('class', 'js-animate-disabled');
+      img.setAttribute('src', imgSrc);
     }
   });
 }
