@@ -27,6 +27,7 @@ function alertContents() {
 
       img.setAttribute('src', imgSrc);
       link.setAttribute('href', gifSrc);
+      link.classList.add('js-gif');
       link.appendChild(img);
       div.appendChild(link);
 
@@ -45,10 +46,12 @@ function animateGif(link) {
   link.addEventListener('click', function(e) {
     e.preventDefault();
 
-    if(imgSrc) {
+    if(link.getAttribute('class') === 'js-gif') {
       img.setAttribute('src', gifSrc);
+      link.classList.toggle('js-animate');
     } else {
       img.setAttribute('src', imgSrc);
+      link.classList.toggle('js-animate');
     }
   });
 }

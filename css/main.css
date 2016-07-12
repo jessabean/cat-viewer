@@ -15,6 +15,7 @@ body {
   text-align: center; }
 
 img {
+  display: block;
   max-width: 100%; }
 
 button {
@@ -29,3 +30,20 @@ button {
 
 #cat-container {
   text-align: center; }
+  #cat-container a {
+    display: inline-block;
+    position: relative; }
+    #cat-container a:before {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 48px;
+      position: absolute;
+      bottom: -58px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      background: url(../img/play.svg) center center no-repeat; }
+    #cat-container a.js-animate:before {
+      background: url(../img/pause.svg) center center no-repeat; }
