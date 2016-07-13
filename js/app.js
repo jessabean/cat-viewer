@@ -19,6 +19,7 @@ function makeRequest(url) {
 
 function alertContents() {
   var READY_STATE_DONE = 4;
+  var HTTP_STATUS_OK   = 200;
 
   if (request.readyState !== READY_STATE_DONE) {
     return;
@@ -26,24 +27,25 @@ function alertContents() {
 
   loader.setAttribute('style', 'display: none');
 
-  if (request.status === 200) {
-    var data = JSON.parse(request.responseText).data;
-    var item = data[Math.floor(Math.random()*25)];
-    var imgSrc  = item.images.fixed_height_still.url;
-    var gifSrc  = item.images.fixed_height.url;
-    var link = document.createElement("a");
-    var img  = document.createElement("img");
-
-    img.setAttribute('src', imgSrc);
-    link.setAttribute('href', gifSrc);
-    link.classList.add('js-gif');
-    link.appendChild(img);
-    div.appendChild(link);
-
-    animateGif(link);
-  } else {
-    showInfo('There was a problem with the request.');
+  if (request.status !== HTTP_STATUS_OK) {
+    console.log('There was a problem with the request.');
+    return;
   }
+
+  var data = JSON.parse(request.responseText).data;
+  var item = data[Math.floor(Math.random()*50)];
+  var imgSrc  = item.images.fixed_height_still.url;
+  var gifSrc  = item.images.fixed_height.url;
+  var link = document.createElement("a");
+  var img  = document.createElement("img");
+
+  img.setAttribute('src', imgSrc);
+  link.setAttribute('href', gifSrc);
+  link.classList.add('js-gif');
+  link.appendChild(img);
+  div.appendChild(link);
+
+  animateGif(link);
 }
 
 function animateGif(link) {
