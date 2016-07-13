@@ -1,6 +1,7 @@
 var request = new XMLHttpRequest();
 var button  = document.getElementById('button');
 var div     = document.getElementById('cat-container');
+var loader = document.getElementById('loader');
 
 function makeRequest(url) {
   request = new XMLHttpRequest();
@@ -10,31 +11,38 @@ function makeRequest(url) {
     return false;
   }
 
-  request.onreadystatechange = alertContents;
+  loader.setAttribute('style', 'display: block');
   request.open("GET", url);
+  request.onreadystatechange = alertContents;
   request.send();
 }
 
 function alertContents() {
-  if (request.readyState === 4) {
-    if (request.status === 200) {
-      var data = JSON.parse(request.responseText).data;
-      var item = data[Math.floor(Math.random()*25)];
-      var imgSrc  = item.images.fixed_height_still.url;
-      var gifSrc  = item.images.fixed_height.url;
-      var link = document.createElement("a");
-      var img  = document.createElement("img");
+  var READY_STATE_DONE = 4;
 
-      img.setAttribute('src', imgSrc);
-      link.setAttribute('href', gifSrc);
-      link.classList.add('js-gif');
-      link.appendChild(img);
-      div.appendChild(link);
+  if (request.readyState !== READY_STATE_DONE) {
+    return;
+  }
 
-      animateGif(link);
-    } else {
-      showInfo('There was a problem with the request.');
-    }
+  loader.setAttribute('style', 'display: none');
+
+  if (request.status === 200) {
+    var data = JSON.parse(request.responseText).data;
+    var item = data[Math.floor(Math.random()*25)];
+    var imgSrc  = item.images.fixed_height_still.url;
+    var gifSrc  = item.images.fixed_height.url;
+    var link = document.createElement("a");
+    var img  = document.createElement("img");
+
+    img.setAttribute('src', imgSrc);
+    link.setAttribute('href', gifSrc);
+    link.classList.add('js-gif');
+    link.appendChild(img);
+    div.appendChild(link);
+
+    animateGif(link);
+  } else {
+    showInfo('There was a problem with the request.');
   }
 }
 
