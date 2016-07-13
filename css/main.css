@@ -1,5 +1,5 @@
 body {
-  background: #A3DFE4 url("/img/cat_bg.png") right bottom no-repeat;
+  background: #A3DFE4 url("../img/cat_bg.png") right bottom no-repeat;
   background-size: 50% auto;
   min-height: 100vh; }
 
