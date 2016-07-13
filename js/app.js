@@ -56,11 +56,15 @@ function animateGif(link) {
   });
 }
 
+function loadGif() {
+  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit=50&api_key=dc6zaTOxFJmzC';
+  div.innerHTML = '';
+  makeRequest(dataURL);
+}
+
 button.addEventListener('click', function(e) { 
   e.preventDefault();
-  div.innerHTML = '';
-
-  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit=50&api_key=dc6zaTOxFJmzC';
-
-  makeRequest(dataURL); 
+  loadGif();
 }, false);
+
+document.addEventListener('DOMContentLoaded', loadGif);
