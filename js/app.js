@@ -1,7 +1,9 @@
 var request = new XMLHttpRequest();
 var button  = document.getElementById('button');
 var div     = document.getElementById('cat-container');
-var loader = document.getElementById('loader');
+var loader  = document.getElementById('loader');
+
+var SIMULATED_SLOWNESS = 0;
 
 function makeRequest(url) {
   request = new XMLHttpRequest();
@@ -12,9 +14,12 @@ function makeRequest(url) {
   }
 
   loader.setAttribute('style', 'display: block');
+
   request.open("GET", url);
   request.onreadystatechange = alertContents;
-  request.send();
+  setTimeout(function() {
+    request.send();
+  }, SIMULATED_SLOWNESS);
 }
 
 function alertContents() {
