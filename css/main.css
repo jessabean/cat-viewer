@@ -4,6 +4,15 @@ body {
   min-height: 100vh; }
 
 #main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 40%;
   min-height: 350px;
   margin: 40px auto 0 auto;
@@ -11,7 +20,10 @@ body {
   padding: 30px; }
 
 .gif-header {
-  margin-bottom: 20px;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
   text-align: center; }
 
 img {
@@ -32,7 +44,8 @@ button {
   text-align: center; }
   #cat-container a {
     display: inline-block;
-    position: relative; }
+    position: relative;
+    margin-top: 20px; }
     #cat-container a:before {
       content: "";
       display: block;
@@ -48,64 +61,53 @@ button {
     #cat-container a.js-animate:before {
       background: url(../img/pause.svg) center center no-repeat; }
 
+.loader {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+              -ms-grid-row-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
 .loader svg {
   height: 64px;
   width: 64px;
-  color: #82057A;
-  -webkit-animation: pulse-kitty 1s infinite, rainbow-kitty 5s infinite;
-          animation: pulse-kitty 1s infinite, rainbow-kitty 5s infinite;
+  color: #A3DFE4;
+  -webkit-transform: scale3d(1.5, 1.5, 1.5);
+          transform: scale3d(1.5, 1.5, 1.5);
+  -webkit-animation: pulse-kitty 1s infinite;
+          animation: pulse-kitty 1s infinite;
   -webkit-transform-origin: 50% 50%;
       -ms-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
-  -webkit-animation-timing-function: ease, step-end;
-          animation-timing-function: ease, step-end; }
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease; }
 
 @-webkit-keyframes pulse-kitty {
   0% {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); }
   50% {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5); }
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+            transform: scale3d(1.5, 1.5, 1.5); }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); } }
 
 @keyframes pulse-kitty {
   0% {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); }
   50% {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5); }
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+            transform: scale3d(1.5, 1.5, 1.5); }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-
-@-webkit-keyframes rainbow-kitty {
-  0% {
-    color: #82057A; }
-  20% {
-    color: #E98EEC; }
-  40% {
-    color: #D4FA8D; }
-  60% {
-    color: #FF8E9F; }
-  80% {
-    color: #A3DFE4; }
-  100% {
-    color: #82057A; } }
-
-@keyframes rainbow-kitty {
-  0% {
-    color: #82057A; }
-  20% {
-    color: #E98EEC; }
-  40% {
-    color: #D4FA8D; }
-  60% {
-    color: #FF8E9F; }
-  80% {
-    color: #A3DFE4; }
-  100% {
-    color: #82057A; } }
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); } }

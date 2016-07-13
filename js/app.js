@@ -13,7 +13,7 @@ function makeRequest(url) {
     return false;
   }
 
-  loader.setAttribute('style', 'display: block');
+  loader.setAttribute('style', 'display: flex');
 
   request.open("GET", url);
   request.onreadystatechange = alertContents;

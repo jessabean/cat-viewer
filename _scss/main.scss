@@ -5,6 +5,8 @@ body {
 }
 
 #main {
+  display: flex;
+  flex-direction: column;
   width: 40%;
   min-height: 350px;
   margin: 40px auto 0 auto;
@@ -13,7 +15,7 @@ body {
 }
 
 .gif-header {
-  margin-bottom: 20px;
+  flex: none;
   text-align: center;
 }
 
@@ -41,6 +43,7 @@ button {
   a {
     display: inline-block;
     position: relative;
+    margin-top: 20px;
 
     &:before {
       content: "";
@@ -60,34 +63,30 @@ button {
   }
 }
 
+.loader {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
 .loader svg {
   height: 64px;
   width: 64px;
-  color: #82057A;
-  animation: 
-    pulse-kitty 1s infinite,
-    rainbow-kitty 5s infinite;
+  color: #A3DFE4;
+  transform: scale3d(1.5, 1.5,1.5);
+  animation: pulse-kitty 1s infinite;
   transform-origin: 50% 50%;
-  animation-timing-function: ease, step-end;
+  animation-timing-function: ease;
 }
 
 @keyframes pulse-kitty {
   0%   { 
-    transform: scale(1);
+    transform: scale3d(1,1,1);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale3d(1.5, 1.5,1.5);
   }
   100% { 
-    transform: scale(1);
+    transform: scale3d(1,1,1);
   }
-}
-
-@keyframes rainbow-kitty {
-  0% {color: #82057A;}
-  20% {color: #E98EEC;}
-  40% {color: #D4FA8D;}
-  60% {color: #FF8E9F;}
-  80% {color: #A3DFE4;}
-  100% {color: #82057A;}
 }
