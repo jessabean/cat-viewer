@@ -47,3 +47,65 @@ button {
       background: url(../img/play.svg) center center no-repeat; }
     #cat-container a.js-animate:before {
       background: url(../img/pause.svg) center center no-repeat; }
+
+.loader svg {
+  height: 64px;
+  width: 64px;
+  color: #82057A;
+  -webkit-animation: pulse-kitty 1s infinite, rainbow-kitty 5s infinite;
+          animation: pulse-kitty 1s infinite, rainbow-kitty 5s infinite;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-timing-function: ease, step-end;
+          animation-timing-function: ease, step-end; }
+
+@-webkit-keyframes pulse-kitty {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes pulse-kitty {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes rainbow-kitty {
+  0% {
+    color: #82057A; }
+  20% {
+    color: #E98EEC; }
+  40% {
+    color: #D4FA8D; }
+  60% {
+    color: #FF8E9F; }
+  80% {
+    color: #A3DFE4; }
+  100% {
+    color: #82057A; } }
+
+@keyframes rainbow-kitty {
+  0% {
+    color: #82057A; }
+  20% {
+    color: #E98EEC; }
+  40% {
+    color: #D4FA8D; }
+  60% {
+    color: #FF8E9F; }
+  80% {
+    color: #A3DFE4; }
+  100% {
+    color: #82057A; } }

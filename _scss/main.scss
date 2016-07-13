@@ -59,3 +59,35 @@ button {
     }
   }
 }
+
+.loader svg {
+  height: 64px;
+  width: 64px;
+  color: #82057A;
+  animation: 
+    pulse-kitty 1s infinite,
+    rainbow-kitty 5s infinite;
+  transform-origin: 50% 50%;
+  animation-timing-function: ease, step-end;
+}
+
+@keyframes pulse-kitty {
+  0%   { 
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% { 
+    transform: scale(1);
+  }
+}
+
+@keyframes rainbow-kitty {
+  0% {color: #82057A;}
+  20% {color: #E98EEC;}
+  40% {color: #D4FA8D;}
+  60% {color: #FF8E9F;}
+  80% {color: #A3DFE4;}
+  100% {color: #82057A;}
+}
