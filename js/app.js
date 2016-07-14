@@ -13,7 +13,7 @@ function makeRequest(url) {
     return false;
   }
 
-  loader.setAttribute('style', 'display: flex');
+  showLoader();
 
   request.open("GET", url);
   request.onreadystatechange = alertContents;
@@ -30,7 +30,7 @@ function alertContents() {
     return;
   }
 
-  loader.setAttribute('style', 'display: none');
+  hideLoader();
 
   if (request.status !== HTTP_STATUS_OK) {
     console.log('There was a problem with the request.');
@@ -54,7 +54,7 @@ function alertContents() {
 }
 
 function animateGif(link) {
-  var img = link.childNodes[0];
+  var img    = link.childNodes[0];
   var gifSrc = link.getAttribute('href');
   var imgSrc = img.getAttribute('src');
 
@@ -75,6 +75,14 @@ function loadGif() {
   var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit=50&api_key=dc6zaTOxFJmzC';
   div.innerHTML = '';
   makeRequest(dataURL);
+}
+
+function showLoader() {
+  loader.setAttribute('style', 'display: flex');
+}
+
+function hideLoader() {
+  loader.setAttribute('style', 'display: none');
 }
 
 button.addEventListener('click', function(e) { 
