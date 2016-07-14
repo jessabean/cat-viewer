@@ -4,6 +4,7 @@ var div     = document.getElementById('cat-container');
 var loader  = document.getElementById('loader');
 
 var SIMULATED_SLOWNESS = 0;
+var NUMBER_OF_CATS = 50;
 
 function makeRequest(url) {
   request = new XMLHttpRequest();
@@ -38,7 +39,9 @@ function alertContents() {
   }
 
   var data = JSON.parse(request.responseText).data;
-  var item = data[Math.floor(Math.random()*50)];
+  var randomIndex = Math.floor(Math.random() * NUMBER_OF_CATS);
+  var item = data[randomIndex];
+
   var imgSrc  = item.images.fixed_height_still.url;
   var gifSrc  = item.images.fixed_height.url;
   var link = document.createElement("a");
@@ -72,7 +75,7 @@ function animateGif(link) {
 }
 
 function loadGif() {
-  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit=50&api_key=dc6zaTOxFJmzC';
+  var dataURL = 'http://api.giphy.com/v1/gifs/search?q=cat&limit='+ NUMBER_OF_CATS + '&api_key=dc6zaTOxFJmzC';
   div.innerHTML = '';
   makeRequest(dataURL);
 }
