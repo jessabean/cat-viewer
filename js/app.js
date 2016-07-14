@@ -48,6 +48,7 @@ function alertContents() {
   var img  = document.createElement("img");
 
   img.setAttribute('src', imgSrc);
+  img.setAttribute('data-gif', gifSrc);
   link.setAttribute('href', gifSrc);
   link.classList.add('js-gif');
   link.appendChild(img);
@@ -58,7 +59,7 @@ function alertContents() {
 
 function animateGif(link) {
   var img    = link.childNodes[0];
-  var gifSrc = link.getAttribute('href');
+  var gifSrc = img.getAttribute('data-gif');
   var imgSrc = img.getAttribute('src');
 
   link.addEventListener('click', function(e) {
