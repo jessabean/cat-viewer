@@ -64,8 +64,9 @@ function animateGif(link) {
 
   link.addEventListener('click', function(e) {
     e.preventDefault();
+    var animated = link.classList.contains('js-animate');
 
-    if(link.getAttribute('class') === 'js-gif') {
+    if(!animated) {
       img.setAttribute('src', gifSrc);
       link.classList.add('js-animate');
     } else {
