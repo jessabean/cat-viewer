@@ -67,10 +67,10 @@ function animateGif(link) {
 
     if(link.getAttribute('class') === 'js-gif') {
       img.setAttribute('src', gifSrc);
-      link.classList.toggle('js-animate');
+      link.classList.add('js-animate');
     } else {
       img.setAttribute('src', imgSrc);
-      link.classList.toggle('js-animate');
+      link.classList.remove('js-animate');
     }
   });
 }
