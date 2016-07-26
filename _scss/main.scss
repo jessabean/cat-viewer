@@ -1,6 +1,7 @@
 body {
-  background: #A3DFE4 url('../img/cat_bg.png') right bottom no-repeat;;
-  background-size: 50% auto;
+  display: flex;
+  flex-direction: column;
+  background: #A3DFE4;
   min-height: 100vh;
 }
 
@@ -9,9 +10,33 @@ body {
   flex-direction: column;
   width: 40%;
   min-height: 350px;
-  margin: 40px auto 0 auto;
+  margin: 40px auto;
   background: white;
   padding: 30px;
+
+  @media (max-width: 650px) {
+    width: 75%;
+  }
+}
+
+#page_wrap {
+  background: transparent url('../img/cat_bg.png') right bottom no-repeat;
+  background-size: 50% auto;
+  flex: 1;
+
+  @media (max-width: 650px) {
+    background-size: 100% auto;
+  }
+}
+
+#page_footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+
+  a {
+    color: #A3DFE4;
+  }
 }
 
 .gif-header {
